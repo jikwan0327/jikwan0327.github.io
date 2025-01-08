@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { PageProps, graphql } from 'gatsby'
 import Introduction from '../components/main/Introduction'
 import Category from '../components/main/Category'
+import PostList from '../components/main/PostList'
 
 export default function Index({
   data: {
@@ -39,12 +40,7 @@ export default function Index({
         selectedCategory={selectedCategory}
         handleSelect={handleSelectCategory}
       />
-
-      {posts.map(({ title, slug, date }) => (
-        <div key={slug}>
-          {title} / {date} / {slug}
-        </div>
-      ))}
+      <PostList posts={posts} />
     </>
   )
 }
@@ -57,6 +53,12 @@ export const query = graphql`
         category
         slug
         date
+        thumbnail {
+          gatsbyImageData(width: 500)
+        }
+        description {
+          description
+        }
       }
     }
   }
