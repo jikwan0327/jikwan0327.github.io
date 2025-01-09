@@ -1,22 +1,20 @@
 import styled from 'styled-components'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
+import { MasonryInfiniteGrid } from '@egjs/react-infinitegrid'
 import PostItem from './PostItem'
 
 type PostListProps = {
   posts: Queries.IndexPageQuery['allContentfulPost']['nodes']
 }
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+const Wrapper = styled(MasonryInfiniteGrid)`
   margin-top: 40px;
 `
 
 export default function PostList({ posts }: PostListProps) {
   return (
-    <Wrapper>
-      {posts.map(({ title, category, slug, date, thumbnail, description }) => (
+    <Wrapper gap={20}>
+      {posts.map(({ title, date, category, thumbnail, description, slug }) => (
         <PostItem
           title={title as string}
           date={date as string}
