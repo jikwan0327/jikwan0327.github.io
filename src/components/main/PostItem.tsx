@@ -20,8 +20,15 @@ const Wrapper = styled(Link)`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-decoration: none;
   color: inherit;
-`
 
+  @media (max-width: 1024px) {
+    width: calc(50% - 10px);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`
 const Thumbnail = styled.div`
   display: grid;
   place-items: center;
@@ -40,10 +47,15 @@ const Title = styled.div`
   font-size: 18px;
   font-weight: 700;
   text-overflow: ellipsis;
+  white-space: no-wrap;
   word-wrap: break-word;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   line-height: 1.2em;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
 `
 
 const Date = styled.div`
