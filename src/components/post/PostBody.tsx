@@ -1,4 +1,7 @@
+import { useEffect } from 'react'
 import styled from 'styled-components'
+import Prism from 'prismjs'
+import 'prismjs/components/prism-typescript'
 import useRenderRichText from '../../hooks/useRenderRichText'
 
 type PostBodyProps = {
@@ -28,13 +31,13 @@ const Content = styled.div`
 export default function PostBody({ content }: PostBodyProps) {
   const richText = useRenderRichText(content)
 
+  useEffect(Prism.highlightAll, [])
+
   return (
     <Wrapper>
       <Content>
         <div id="content">{richText}</div>
-        {/* 댓글 컴포넌트가 들어갈 자리 */}
       </Content>
-      {/* 플로팅 목차 컴포넌트가 들어갈 자리 */}
     </Wrapper>
   )
 }
